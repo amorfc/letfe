@@ -1,0 +1,4 @@
+{
+  "GRPC_BASE_URL": "http://localhost:50051",
+  "GRPC_PORT": "12312"
+}
