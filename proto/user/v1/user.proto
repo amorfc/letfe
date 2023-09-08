@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package user;
+
+service User {
+    rpc RegisterUser (RegisterUserRequest) returns (RegisterUserResponse) {};
+    rpc LoginUser (LoginUserRequest) returns (LoginUserResponse) {};
+}
+
+message RegisterUserRequest {
+    string email = 1;
+    string password = 2;
+    string surname = 3;
+    string name = 4;
+    UserType user_type = 5;
+}
+
+enum UserType{
+    CORPORATION = 0;
+    Tutor = 1;
+    Member = 2;
+    Student = 3;
+    Guest = 4;
+    Other = 5;
+}
+
+message RegisterUserResponse {
+    RegisteredUserResponseData data = 1;
+}
+
+message RegisteredUserResponseData {
+    int32 id = 1 ;
+    string email = 2;
+    string name = 3;
+    string surname = 4;
+    UserType user_type = 5;
+}
+
+message LoginUserRequest {
+    string email = 1;
+    string password = 2;
+    string device_id = 3;
+}
+
+message LoginUserResponse {
+    LoggedInUserResponseData data = 1;
+}
+
+message LoggedInUserResponseData{
+    string access_token = 1;
+    string refresh_token = 2;
+    string expires_at = 3;
+}
